@@ -57,3 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+#rsa
+id_rsa_Shubham
+id_rsa_Shubham.pub
