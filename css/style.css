@@ -1,0 +1,200 @@
+
+body#parallax{
+	background: #c7c7c7;
+}
+div#fixedhead{
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	color:#81b9bf;
+	background:#b2ebf2;
+	padding:5px;
+	z-index: 999;
+}
+
+div#headertabs{
+	float :left;
+	width:20%;
+	border-style: solid;
+	border-width:0px 1px 0px 0px;
+	border-color: #000;
+	padding:0px -10px 10px 10px;
+}
+div#headertabsCenter{
+	float :left;
+	width:20%;
+	border-style: solid;
+	border-width:0px 1px 0px 0px;
+	border-color: #000;
+	padding:0px -10px 10px 10px;
+}
+p#headerTabText{	
+	font-family: 'Montserrat';
+	color:#000;
+	font-size:2em;
+	text-align:center;
+	font-weight: 300;
+}
+p#headerTabTextCenter{
+	font-family: 'Montserrat';
+	color:#000;
+	font-size:2.1em;
+	text-align:center;
+	font-weight: 600;
+}
+a:hover{
+	text-decoration: none;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+div#headertabs:hover{
+	background:#b2ebf2;
+}
+div#twoColumnGraphicAndQuery{
+	padding: 10px 5px 0px 5px;
+	height: 950px;
+	opacity:50%;
+}
+div#map{
+	float:left;	
+	padding:10px;
+	width:50%;
+	height:900px;
+	margin:10px;
+}
+div#LocationBasedQuery{
+	float: left;
+	padding:10px 5px 0px 5px;
+	width: 48%;
+	height: 900px;
+	border-left: 1px solid
+	margin: 10px;
+}
+form#LocationForm{
+	padding :10px;
+	height: 900px;
+}
+form.LocationForm{
+	font-size : 1.8em;
+	text-align: left justify;
+}
+div#ChartBasedQuery{
+	float: left;
+	padding:10px 5px 0px 5px;
+	width: 45%;
+	height: 900px;
+	margin: 10px;
+}
+
+div#chart{
+	float:left;
+	padding:10px;
+	width:50%;
+	height:800px;
+	margin: 10px;
+}
+#myChart{
+	background:#ffffff;
+}
+form#GraphForm{
+	padding :10px;
+	height: 900px;
+}
+form.GraphForm{
+	font-size : 1.8em;
+	text-align: left justify;
+}
+div#NewDataBanner{
+	width:100%;
+	height:200px;
+	margin: 100px 0px 100px 0px;
+	background: #81b9bf;
+}
+p#NewDataBanner{
+	text-align: center;
+	font-size: 5em;
+	padding: 30px 0px 20px 0px;
+	color: #FFFFFF;
+	font-weight: 600;
+}
+form#twoForms{
+	width : 98%;
+	font-family: 'Montserrat';
+	font-weight:600;
+	font-size: 1.5em;
+	text-decoration: none;
+	clear: both;
+}
+input#SubmitButtonTwoForms{
+	font-size: 2em;
+	width : 10em;
+	height: 3em;
+	margin : 40px 40% 1% 40%;
+}
+div#addData{
+	text-align: left;
+	float: left;
+	margin: 0px 0px 20px 20px;
+	width : 49%;
+	height: 100%;
+	padding: 10px;
+	font-size : 1.5em;
+}
+div#fixedfooter{
+	font-family: 'Montserrat';
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	color:#CCC;
+	background:#b2ebf2;
+	padding:8px;
+}
+div#footerTabs{
+	float: left;
+	padding:2px 8.7% 0px 8.7%;
+	border-style: solid;
+	border-width: 0px 2px 0px 0px;
+	border-color: #000;
+}
+div#footerTabs:hover{
+	background:#b2ebf2;
+}
+p#footerTabTextLink{
+	color:#000;
+	font-size:1.2em;
+	text-align:left;
+}
+a#footerTabTextLink{
+	color:#000;
+	font-size:1.2em;
+	text-align:left;
+}
+
+
+
+
+/*
+ * ABOUT US PAGE STYLING STARTS HERE!
+ */
+ h1.AboutIntroHeader{
+ 	font-family: 'Montserrat';
+ 	color: #000;
+ 	font-size: 2em;
+ 	padding: 10px 5px 0px 5px;
+ 	margin-left: 20px;
+ }
+ p.AboutIntroHeader{
+ 	font-family : 'Montserrat';
+ 	color : #000;
+ 	font-size: 1.8em;
+ 	padding : 10px 5px 0px 5px;
+ 	margin-left: 20px;
+ 	margin-right: 300px;
+ 	text-align: justify;
+
+ }
+
