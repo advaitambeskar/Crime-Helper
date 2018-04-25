@@ -69,7 +69,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('dev', [ 'connect:server', 'watch:dev' ]);
+    grunt.registerTask('dev', [ 'watch:dev' ]);
     // grunt.registerTask('test', [ 'bower', 'jshint', 'karma:continuous' ]);
     grunt.registerTask('minified', [  'connect:server', 'watch:min' ]);
     grunt.registerTask('package', [ 'files', 'concat:dist', 'uglify:dist',
