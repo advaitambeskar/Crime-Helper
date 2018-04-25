@@ -1,200 +1,179 @@
+/* A Free Design by Bryant Smith (bryantsmith.com) */
 
-body#parallax{
-	background: #c7c7c7;
-}
-div#fixedhead{
-	position:fixed;
-	top:0px;
-	left:0px;
-	width:100%;
-	color:#81b9bf;
-	background:#b2ebf2;
-	padding:5px;
-	z-index: 999;
-}
-
-div#headertabs{
-	float :left;
-	width:20%;
-	border-style: solid;
-	border-width:0px 1px 0px 0px;
-	border-color: #000;
-	padding:0px -10px 10px 10px;
-}
-div#headertabsCenter{
-	float :left;
-	width:20%;
-	border-style: solid;
-	border-width:0px 1px 0px 0px;
-	border-color: #000;
-	padding:0px -10px 10px 10px;
-}
-p#headerTabText{	
-	font-family: 'Montserrat';
-	color:#000;
-	font-size:2em;
-	text-align:center;
-	font-weight: 300;
-}
-p#headerTabTextCenter{
-	font-family: 'Montserrat';
-	color:#000;
-	font-size:2.1em;
-	text-align:center;
-	font-weight: 600;
-}
-a:hover{
-	text-decoration: none;
-}
-a{
-	text-decoration: none;
-	color: #000;
-}
-div#headertabs:hover{
-	background:#b2ebf2;
-}
-div#twoColumnGraphicAndQuery{
-	padding: 10px 5px 0px 5px;
-	height: 950px;
-	opacity:0.5;
-}
-div#map{
-	float:left;	
-	padding:10px;
-	width:50%;
-	height:900px;
-	margin:10px;
-}
-div#LocationBasedQuery{
-	float: left;
-	padding:10px 5px 0px 5px;
-	width: 48%;
-	height: 900px;
-	border-left: 1px solid;
-	margin: 10px;
-}
-form#LocationForm{
-	padding :10px;
-	height: 900px;
-}
-form.LocationForm{
-	font-size : 1.8em;
-	text-align: left ;
-}
-div#ChartBasedQuery{
-	float: left;
-	padding:10px 5px 0px 5px;
-	width: 45%;
-	height: 900px;
-	margin: 10px;
-}
-
-div#chart{
-	float:left;
-	padding:10px;
-	width:50%;
-	height:800px;
-	margin: 10px;
-}
-#myChart{
-	background:#ffffff;
-}
-form#GraphForm{
-	padding :10px;
-	height: 900px;
-}
-form.GraphForm{
-	font-size : 1.8em;
-	text-align: left ;
-}
-div#NewDataBanner{
-	width:100%;
-	height:200px;
-	margin: 100px 0px 100px 0px;
-	background: #81b9bf;
-}
-p#NewDataBanner{
+html, body {
 	text-align: center;
-	font-size: 5em;
-	padding: 30px 0px 20px 0px;
-	color: #FFFFFF;
-	font-weight: 600;
 }
-form#twoForms{
-	width : 98%;
-	font-family: 'Montserrat';
-	font-weight:600;
-	font-size: 1.5em;
-	text-decoration: none;
-	clear: both;
+p {text-align: left;}
+
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #697281;
+	font-family:  Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #b2ebf2;
+	background: #26476E url(../images/background.png) repeat-x;
 }
-input#SubmitButtonTwoForms{
-	font-size: 2em;
-	width : 10em;
-	height: 3em;
-	margin : 40px 40% 1% 40%;
+*
+{
+	margin: 0 auto 0 auto;
+	text-align:left;}
+
+#page
+{
+	margin: 0 auto 0 auto;
+	display: block;
+	height:auto;
+	position: relative;
+	overflow: hidden;
+	width: 753px;
 }
-div#addData{
+
+#header
+{
+	margin-top:25px;
+	padding-top:63px;
+	padding-left:30px;
+	padding-right:30px;
+	background-image:url(../images/header.png);
+	background-repeat:no-repeat;
+	height:122px;
+	width:753px;
+	overflow:hidden;
+}
+
+#header h1, #header h2
+{
+	margin-left:0px;
+	width:693px;
+	position:relative;
+	color:#000000;
+	text-align:center;
+	font-size:15px;
+	font-weight:bold;
+	font-family:Arial, Helvetica, sans-serif;
+	clear:both;
+}
+
+#header h1
+{
+	margin-left:0px;
+	width:693px;
+	position:relative;
+	color:#26476E;
+	font-size:30px;
+}
+
+
+
+#bar
+{
+
+	background-image:url(../images/bar.png);
+	background-repeat:no-repeat;
+	height:53px;
+	width:750px;
+	padding-bottom:15px;
+	text-align:center;
+	margin:0 auto 0 auto;
+}
+
+#bar ul {
+	margin: 0px auto 0px auto;
+	padding: 0px;
+	list-style-type: none;
+	height: 74px;
+	text-align:center;
+}
+#bar ul li , #bar ul li a, #bar ul li a:visited{
+	margin: 0px;
+	padding: 0px;
+	height: 30px;
+	overflow: hidden;
+	display: inline;
+	text-align:center;
+	line-height:65px;
+	color:blue;
+	padding-left:6px;
+	padding-right:6px;
+}
+
+#bar ul li a:hover
+{
+	color:#000000;
+	text-decoration:underline;
+
+}
+
+
+
+
+
+
+
+
+
+.contentTitle
+{
+	width:700px;
+	height:44px;
+	margin-top:20px;
+	margin-left:0px;
+	margin-right:25px;
+	background-image:url(tab_back.png);
+	background-repeat:no-repeat;
+
+}
+
+.contentTitle h1
+{
+	margin-left:21px;
+	padding-top:8px;
+	font-size:21px;
+	font-weight:bold;
+	letter-spacing:-1px;
+	color:#FFFFFF;
+}
+
+
+.contentText
+{
+	width:680px;
+	padding-left:30px;
+	padding-right:30px;
+	font-size:13px;
+	color:#FFFFFF;
+	line-height:30px;
+}
+
+a
+{
+	text-decoration:none;
+	color:#F1F3F8;
+}
+
+a:hover
+{
+	border-bottom:1px dotted #F1F3F8;
+}
+
+
+#footer {
+	width: 750px;
+	height:20px;
+	text-align:center;
+	font-size:9px;
+	color:#223F8D;
+	padding-top:20px;
+}
+
+html, body {
+	text-align: center;
+}
+p {
+	margin:7px;
 	text-align: left;
-	float: left;
-	margin: 0px 0px 20px 20px;
-	width : 49%;
-	height: 100%;
-	padding: 10px;
-	font-size : 1.5em;
+	text-align:justify;
 }
-div#fixedfooter{
-	font-family: 'Montserrat';
-	position:fixed;
-	bottom:0px;
-	left:0px;
-	width:100%;
-	color:#CCC;
-	background:#b2ebf2;
-	padding:8px;
-}
-div#footerTabs{
-	float: left;
-	padding:2px 8.7% 0px 8.7%;
-	border-style: solid;
-	border-width: 0px 2px 0px 0px;
-	border-color: #000;
-}
-div#footerTabs:hover{
-	background:#b2ebf2;
-}
-p#footerTabTextLink{
-	color:#000;
-	font-size:1.2em;
-	text-align:left;
-}
-a#footerTabTextLink{
-	color:#000;
-	font-size:1.2em;
-	text-align:left;
-}
-
-
-
-
-/*
- * ABOUT US PAGE STYLING STARTS HERE!
- */
- h1.AboutIntroHeader{
- 	font-family: 'Montserrat';
- 	color: #000;
- 	font-size: 2em;
- 	padding: 10px 5px 0px 5px;
- 	margin-left: 20px;
- }
- p.AboutIntroHeader{
- 	font-family : 'Montserrat';
- 	color : #000;
- 	font-size: 1.8em;
- 	padding : 10px 5px 0px 5px;
- 	margin-left: 20px;
- 	margin-right: 300px;
- 	text-align: justify;
-
- }
 
