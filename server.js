@@ -13,7 +13,7 @@ app.use('/bower_components', express.static(__dirname + '/./bower_components'));
 require('./routes.js')(app);
 
 app.get('*', function(req, res) {
-    res.sendfile(__dirname + '/app/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    res.sendfile(__dirname + '/webApp/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 
 // listen (start app with node server.js) ======================================

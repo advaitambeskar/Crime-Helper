@@ -1,5 +1,5 @@
 {
-  "user"          : "banka",
-  "password"      : "#Include1",
+  "user"          : "neel",
+  "password"      : "Qwerty#1234",
   "connectString" : "oracle.cise.ufl.edu:1521/orcl"
 }

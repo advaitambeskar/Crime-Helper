@@ -19,21 +19,21 @@ module.exports = function(grunt) {
                 separator: ';'
             },
             dist: {
-                src: [ 'app/*.js', 'app/**/*.js', 'tmp/*.js' ],
+                src: [ 'webApp/*.js', 'webApp/**/*.js', 'tmp/*.js' ],
                 dest: 'dist/app.js'
             }
         },
 
         watch: {
             dev: {
-                files: [ 'Gruntfile.js', 'app/*.js', '*.html' ],
+                files: [ 'Gruntfile.js', 'webApp/*.js', '*.html' ],
                 tasks: [   'concat:dist'],
                 options: {
                     atBegin: true
                 }
             },
             min: {
-                files: [ 'Gruntfile.js', 'app/*.js', '*.html', 'app/**/*.js' ],
+                files: [ 'Gruntfile.js', 'webApp/*.js', '*.html', 'webApp/**/*.js' ],
                 tasks: [   'concat:dist',  'uglify:dist' ],
                 options: {
                     atBegin: true
