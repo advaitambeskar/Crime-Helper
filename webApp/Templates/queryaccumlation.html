@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html >
+	<head>
+		<script src = 'scripts/main.js'> </script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+		
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+		<script src = "scripts/angular.min.js"></script>
+
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+		<link rel="stylesheet"	type ="text/css" href = "../../css/style.css">
+	</head>
+
+	<body>
+
+			<div id="fixedhead">
+				<div id="headertabs"><p id="headerTabText"><a href="index.html">HOME</a></p></div>
+				<div id="headertabs"><p id="headerTabText"><a href="aboutus.html">ABOUT US</a></p></div>
+				<div id="headertabsCenter"><p id="headerTabTextCenter"><a href="index.html">L.A. CRIME WATCH</a></p></div>
+				<div id="headertabs"><p id="headerTabText"><a href = "dataset.html">DATASETS</a></p></div>
+				<div id="headertabs"><a href= "login.html"><p id="headerTabText" ><a href="login.html">LOGIN</a></p></a></div>
+			</div>
+			<br />
+			<br />
+			<br />
+			<br />
+
+			<div id ="twoColumnGraphicAndQuery">
+				<div id = "map">
+				</div>
+				<div id = "LocationBasedQuery">
+					<form action = "nodejsfile" id ="LocationForm" class = "LocationForm">
+						<!-- <input type ="range" min ="1" max="100" value> -->
+						<p>Date From</p>
+						<input type ="date" name = "dateOccured" default="x`">
+						<p>Date To</p>
+						<input>
+						<p>Area</p>
+						<input>
+						<p>Time To</p>
+						<input>
+						<p>Time From</p>
+						<input>
+						<p>Map Query 4</p>
+						<input>
+						<p>Map Query 5</p>
+						<input>
+						<p></p>
+						<span style="display:inline-block; width: 20px;"></span>
+						<input type = 'SUBMIT' id = "mapQuery" value = "SUBMIT MAP QUERY">
+					</form>
+				</div>
+			</div>
+			<div id ="twoColumnGraphicAndQuery">
+				<div id = "ChartBasedQuery">
+					<h2 style= "size:30px; color: #000"> Query Forms Here!</h2>
+					<form action = "nodejsfile" id ="GraphForm" class = "GraphForm">
+						<p>Weapon Used</p>
+						<input>
+						<p>Weapon Used</p>
+						<input>
+						<p>Weapon Used</p>
+						<input>
+						<p>Weapon Used</p>
+						<input>
+						<p>Weapon Used</p>
+						<input>
+						<p>Weapon Used</p>
+						<input>
+						<p>Weapon Used</p>
+						<input>
+						<p></p>
+						<span style="display:inline-block; width: 20px;"></span>
+						<input type = 'SUBMIT' id = "GraphQuery" value = "SUBMIT GRAPH QUERY">
+					</form>
+				</div>
+				<div id="chart">
+					<canvas id="myChart"></canvas>
+
+				</div>
+			</div>
+
+			<div id = "NewDataBanner" class= "parallax">
+				<p id = "NewDataBanner">TEXT BASED QUERY REQUESTS</p>
+			</div>
+			<div id ="twoColumnGraphicAndQuery">
+				<form id="twoForms">
+					<div id="addData">
+						<h1 style= "text-decoration: underline">DATE & TIME INFORMATION</h1><br />
+						<p>Date From</p><input type ="date" name = "dateOccured" id = "startDateLocation">
+						<p>Time From</p><input type = "time" name ="timeOccured">
+						<p>Date To</p><input type ="date" name = "dateOccured" id = "todayDateLocation">
+						<p>Time To</p><input type = "time" name ="timeOccured">
+						<p>District</p>
+							<select id = "districtOccured">
+								<option value = '1'>Westwood</option>
+								<option value = '2'>Westwood Village</option>
+								<option value = '3'>Whitley Heights</option>
+								<option value = '4'>Wholesale District</option>
+								<option value = '5'>Wilmington</option>
+								<option value = '6'>Wilshire Center</option>
+								<option value = '7'>Wilshire Park</option>
+								<option value = '8'>Windsor Square</option>
+								<option value = '9'>Yucca Corridor</option>
+							</select>
+
+						<p>Area Name</p><input>
+						<p>Incident Type</p>
+							<select id = "districtOccured">
+								<option value = '1'>Westwood</option>
+								<option value = '2'>Westwood Village</option>
+								<option value = '3'>Whitley Heights</option>
+								<option value = '4'>Wholesale District</option>
+								<option value = '5'>Wilmington</option>
+								<option value = '6'>Wilshire Center</option>
+								<option value = '7'>Wilshire Park</option>
+								<option value = '8'>Windsor Square</option>
+								<option value = '9'>Yucca Corridor</option>
+							</select>
+					</div>
+					<div id = "addData">
+						<h1 style= "text-decoration: underline">VICTIM INFORMATION</h1><br />
+						<p>Address</p><input>
+						<p>Victim Age</p><input>
+						<p>Victim Sex</p><input>
+						<p>Victim Descent</p><input>
+					</div>
+					<input type="submit" name="SUBMIT" value = "SUBMIT" id= "SubmitButtonTwoForms" />
+				</form>
+			</div>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<div id = "NewDataBanner" class= "parallax">
+				<p id = "NewDataBanner">ENTER NEW DATA</p>
+			</div>
+			<div id ="twoColumnGraphicAndQuery">
+				<form id="twoForms">
+					<div id="addData">
+						<h1 style= "text-decoration: underline">DATE & TIME INFORMATION</h1><br />
+						<p>Date Occured</p><input type ="date" name = "dateOccured" id = "startDate">
+						<p>Time Occured</p><input type = "time" name ="timeOccured">
+						<p>Date Occured</p><input type ="date" name = "dateOccured" >
+						<p>Time Occured</p><input type = "time" name ="timeOccured">
+						<p>District</p>
+							<select id = "districtOccured">
+								<option value = '1'>Westwood</option>
+								<option value = '2'>Westwood Village</option>
+								<option value = '3'>Whitley Heights</option>
+								<option value = '4'>Wholesale District</option>
+								<option value = '5'>Wilmington</option>
+								<option value = '6'>Wilshire Center</option>
+								<option value = '7'>Wilshire Park</option>
+								<option value = '8'>Windsor Square</option>
+								<option value = '9'>Yucca Corridor</option>
+							</select>
+						<p>Area Name</p><input>
+						<br />
+						<br />
+						<h1 style= "text-decoration: underline">VICTIM INFORMATION</h1><br />
+						<p>Victim Age</p><input>
+						<p>Victim Sex</p><input>
+						<p>Victim Descent</p><input>
+					</div>
+					<div id = "addData">
+						<h1 style= "text-decoration: underline">MISC. INFORMATION</h1><br />
+						<p>Weapon Used</p><input>
+						<p>ADDRESS</p><input>
+						<p>CROSS STREET</p><input>
+						<p>CRIME TYPE</p><input>
+						<br />
+						<h1 style= "text-decoration: underline">PERSONAL INFORMATION</h1><br />
+						<p>Name</p><input>
+						<p>Phone Number</p><input>
+						<p>Address</p><input>
+					</div>
+					<input type="submit" name="SUBMIT" value = "SUBMIT" id= "SubmitButtonTwoForms" />
+				</form>
+			</div>
+			<div style= "width: 100%; height: 450px;">
+			</div>
+			<div id="fixedfooter">
+				<div id="footerTabs">
+					<p id="footerTabTextLink">DBMS Project Group #18</p>
+				</div>
+				<div id="footerTabs">
+					<a id="footerTabTextLink" href = "admin.html">Admin Page Link</p>
+				</div>
+				<div id="footerTabs">
+					<a id="footerTabTextLink" href = "login.html">Login Page</p>
+				</div>
+				<div id="footerTabs">
+					<a id="footerTabTextLink" href =" signup.html">Sign up to be our moderator</p>
+				</div>
+			</div>
+
+		<script>
+			var ctx = document.getElementById('myChart').getContext('2d');
+			var chart = new Chart(ctx, {
+			    // The type of chart we want to create
+			    type: 'line',
+
+			    // The data for our dataset
+			    data: {
+			        labels: ['1','2','3','4','5','6','7','8','9', '10', '11', ' 12', '13' , '14'],
+			        datasets: [
+			        {
+			        	fill : false,
+			            label: "Trial Dataset",
+			            backgroundColor: 'rgb(3, 169, 244)',
+			            borderColor: 'rgb(3, 169, 244)',
+			            data: [0, 10, 5, 2, 20, 30, 45, 34, 1, 2, 3, 24, 40, 44],
+			        },
+			        {
+			        	fill : false,
+			            label: "Trial Dataset",
+			            backgroundColor: 'rgb(244, 169, 3)',
+			            borderColor: 'rgb(244, 169, 3)',
+			            data: [3, 20, 25, 12, 30, 40, 25, 14, 11, 22, 13, 44, 40, 24],
+			        }]
+			    },
+
+			    // Configuration options go here
+			    options: {
+			    	showLines: true
+			    }
+			});
+		</script>
+
+		<script>
+			$("#login").hover(function() {
+				$("#login-form").slideToggle();
+			});
+		</script>
+		<script>
+			function myMap() {
+				var mapProp= {
+    				center:new google.maps.LatLng(34.0631, -118.2337),
+    				zoom:11,
+    				mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				var map = new google.maps.Map(document.getElementById("map"),mapProp);
+			}
+		</script>
+
+		<script>
+			document.getElementById("startDateLocation").defaultValue = "2014-02-09"; 
+			document.getElementById("todayDateLocation").defaultValue = "2018-04-27"; 
+			document.getElementById("startDateGraph").defaultValue = "2014-02-09"; 
+			document.getElementById("todayDateGraph").defaultValue = "2018-04-27"; 
+			document.getElementById("startDate").defaultValue = "2014-02-09"; 
+			document.getElementById("startDate").defaultValue = "2014-02-09"; 
+			document.getElementById("startDate").defaultValue = "2014-02-09"; 
+			document.getElementById("startDate").defaultValue = "2014-02-09"; 
+		</script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX_TOs-fwMSuaSqs6v2yswMRjsugUkKDY&callback=myMap"></script>
+
+		<script src = "scripts/angular.min.js"></script>
+	</body>
+</html>
