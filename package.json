@@ -4,9 +4,7 @@
   "description": "Tools to Combat Crime ",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-    "start": "npm run build && node dist/server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
@@ -18,7 +16,11 @@
     "oracledb": "^2.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
     "grunt": "^0.4.5",
+    "grunt-bower-task": "~0.3.4",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-compress": "^1.4.3",
     "grunt-contrib-concat": "0.3.0",
@@ -30,9 +32,6 @@
     "grunt-exec": "0.4.5",
     "grunt-html2js": "^0.5.1",
     "grunt-jsdoc": "0.5.4",
-    "grunt-bower-task": "~0.3.4",
-    "babel-cli": "^6.24.0",
-    "babel-preset-es2015": "^6.24.0",
     "rimraf": "^2.6.1"
   }
 }
