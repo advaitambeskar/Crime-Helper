@@ -1,5 +1,5 @@
 var bodyParser = require('body-parser');
-var user = require("../services/userService.js");
+var user = require("../Services/userService.js");
 
 async function getUsers(req, res){
 

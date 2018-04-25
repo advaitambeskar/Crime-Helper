@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 oracledb.autoCommit = true;
 oracledb.outFormat = oracledb.OBJECT;
 
-export function getAll(req, res)
+export function getUnsafeAreas(req, res)
 {
 	var oracledb = require('oracledb');
 	var dbConfig = require('./../../CONFIG.json');
@@ -22,8 +22,9 @@ export function getAll(req, res)
 	    }
 	    connection.execute(
 	      // The statement to execute
-	      `SELECT *
-	       FROM BANKA.USER_TABLE`,
+	      `select area_name,count(*) from ( select 
+a.area_name, m.dr_number from SSWAPNIL.crime_master m , SSWAPNIL.area_info a where m.area_id = a.area_id )
+group by area_name  order by count(*) desc`,
 	      // execute() options argument.  Since the query only returns one
 	      // row, we can optimize memory usage by reducing the default
 	      // maxRows value.  For the complete list of other options see
@@ -36,8 +37,8 @@ export function getAll(req, res)
 	          doRelease(connection);
 	          return;
 	        }
-	       	var userData = {
-	       		users : result.rows
+	       	var areas = {
+	       		areas : result.rows
 	       	}
 	        res.send(userData, 201);
 	        doRelease(connection);
