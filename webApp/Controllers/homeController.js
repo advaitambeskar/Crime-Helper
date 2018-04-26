@@ -6,10 +6,10 @@
 
     app.controller("HomeController",homeCtrl);
 
-    function homeCtrl($state){
+    function homeCtrl($state, api){
         var vm = this;
 
     }
 
-    homeCtrl.$inject = ["$state"];
+    homeCtrl.$inject = ["$state", "api"];
 })();

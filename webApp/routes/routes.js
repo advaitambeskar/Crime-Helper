@@ -4,7 +4,8 @@
     angular.module("crimeHelper.routes",[
         'ui.router',
         'api.service',
-        'crimeHelper.homeController'
+        'crimeHelper.homeController',
+        'crimeHelper.unsafeAreaController'
     ])
         .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
             $locationProvider.hashPrefix('');
@@ -16,6 +17,12 @@
                     templateUrl: "User.html",
                     controller: "HomeController",
                     controllerAs: "homeCtrl"
+                })
+                .state('unsafeAreas',{
+                    url: '/unsafeAreas',
+                    templateUrl: "unsafeArea.html",
+                    controller: "unsafeAreaController",
+                    controllerAs: "unsafeAreaCtrl"
                 })
         }]);
 })();
