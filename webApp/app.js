@@ -1,5 +1,6 @@
 (function () {
     var app = angular.module("crime-helper",[
-        'crimeHelper.routes'
+        'crimeHelper.routes',
+        'nvd3'
     ]);
 })();
