@@ -1,5 +1,5 @@
 import {getUsers} from './app/Controllers/userController.js';
-import {getUnsafeAreas} from './app/Controllers/crimeController.js';
+import {getUnsafeAreas, getCrimeAreasCategory} from './app/Controllers/crimeController.js';
 var bodyParser = require('body-parser');
 
 module.exports = function(app) {
@@ -12,4 +12,12 @@ module.exports = function(app) {
     var rows = getUnsafeAreas(req, res);
     
   });
+
+  app.get('/api/v1/getCrimeAreasCategory', function(req, res){
+    console.log(req.query);
+    var rows = getCrimeAreasCategory(req, res);
+  });
+
+
+
 };
