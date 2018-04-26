@@ -1,0 +1,73 @@
+
+<head>
+  <script type="text/javascript">
+    function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+  </script>
+
+</head>
+<body>
+
+<div class="container">
+
+<header>
+
+   
+   <h1><br></br>User Page</h1>
+</header>
+  
+<nav>
+  <ul>
+    <img src="pulpitrock.jpg" alt="Mountain View">
+    <br></br>
+
+    <li><a href="#">disp_username</a></li>
+    <br></br>
+
+    
+    <div class="Menu">
+<button onclick="myFunction()" class="dropbtn">Menu</button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+    <a href="#about">About</a>
+    <a href="#edit">Edit Profile</a>
+    <a href="#blog">Info</a>
+  
+  <a href="Page 1.html">Logout</a>
+  </div>
+</div>
+  </ul>
+</nav>
+
+<article>
+  <h1>Welcome User</h1>
+  <p>Please select your query</p>
+  <button class="button button4" class="block">Report Crime</button>
+  <button class="button button4" class="block">Update Crime</button>
+  <button class="button button4" class="block">Request Information</button>
+
+
+</article>
+<br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+<footer><center>Copyright &copy; LAPD</center></footer>
+
+</div>
+
+</body>
+</html>

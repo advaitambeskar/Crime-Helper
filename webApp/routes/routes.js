@@ -1,17 +1,21 @@
 (function(){
     'use strict';
 
-    angular.module("hangout.routes",[
-        'ui.router'
+    angular.module("crimeHelper.routes",[
+        'ui.router',
+        'api.service',
+        'crimeHelper.homeController'
     ])
-        .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
+        .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
             $locationProvider.hashPrefix('');
             $urlRouterProvider.when('', "/");
 
             $stateProvider
                 .state('home', {
                     url: '/',
-                    templateUrl: "angularApp/templates/homepage.html"
+                    templateUrl: "User.html",
+                    controller: "HomeController",
+                    controllerAs: "homeCtrl"
                 })
         }]);
 })();
