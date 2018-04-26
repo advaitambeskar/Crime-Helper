@@ -6,8 +6,12 @@ var bodyParser = require('body-parser');
 var router = require('./routes');
 
 app.use(bodyParser.json());
-app.use('/dist', express.static(__dirname + '/./dist'));
+// app.use('/dist', express.static(__dirname + '/./dist'));
+app.use(express.static('./webApp'));
+app.use(express.static('./webApp/css'));
+app.use(express.static('./webApp/Templates'));
 app.use('/bower_components', express.static(__dirname + '/./bower_components'));
+
 
 // application -------------------------------------------------------------
 

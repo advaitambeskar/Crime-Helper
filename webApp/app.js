@@ -1,3 +1,5 @@
 (function () {
-    var app = angular.module("crime-helper",[]);
+    var app = angular.module("crime-helper",[
+        'crimeHelper.routes'
+    ]);
 })();
