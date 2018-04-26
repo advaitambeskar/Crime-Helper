@@ -1,5 +1,8 @@
 {
   "user"          : "neel",
   "password"      : "Qwerty#1234",
-  "connectString" : "oracle.cise.ufl.edu:1521/orcl"
+  "connectString" : "oracle.cise.ufl.edu:1521/orcl",
+  "user2"		   : "sswapnil", 
+	"password2"      : "chutiyahoka"
+
 }

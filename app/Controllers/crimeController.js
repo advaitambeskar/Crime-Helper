@@ -12,10 +12,7 @@ async function getCrimeAreasCategory(req, res){
 	var data = {
 		"cat" : req.query.category,
 		"start" : req.query.startTime, 
-		"end" : req.query.endTime,
-		"page" : parseInt(req.query.page),
-		"perPage" : parseInt(req.query.perPage)
-
+		"end" : req.query.endTime
 	}
 
 	console.log(data);
@@ -23,7 +20,34 @@ async function getCrimeAreasCategory(req, res){
 
 }
 
+async function getCrimeRamapantArea(req, res){
+
+	var data = {
+		"cat" : req.query.category,
+		"start" : req.query.startTime, 
+		"end" : req.query.endTime
+	}
+
+	console.log(data);
+  return crimes.getCrimeRamapantArea(data, res);
+
+}
+
+async function getCrimeAreasRaceGenderAge(req, res){
+
+	var data = {
+		"race" : req.query.race,
+		"gender" : req.query.gender,
+		"age" : parseInt(req.query.age)
+
+	}
+  return crimes.getCrimeAreasRaceGender(data, res);
+
+}
+
 module.exports =  {
   getUnsafeAreas : getUnsafeAreas,
-  getCrimeAreasCategory :getCrimeAreasCategory
+  getCrimeAreasCategory :getCrimeAreasCategory, 
+  getCrimeAreasRaceGenderAge : getCrimeAreasRaceGenderAge,
+  getCrimeRamapantArea : getCrimeRamapantArea
 };

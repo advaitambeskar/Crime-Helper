@@ -7,6 +7,15 @@ async function getUsers(req, res){
 
 }
 
+async function getTableCount(req, res){
+
+  return user.getTableCount(req, res);
+
+}
+
+
+
 module.exports =  {
-  getUsers : getUsers
+  getUsers : getUsers,
+  getTableCount : getTableCount
 };
