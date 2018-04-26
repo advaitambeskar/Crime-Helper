@@ -31,7 +31,7 @@ export function getCrimeAreasCategory(req, res)
         and SSWAPNIL.crime_description.crimecode = SSWAPNIL.crime_master.crime_code
         AND TIME_OCCURRED>=:startTime AND TIME_OCCURRED<:endTime
         GROUP BY AREA_NAME ORDER BY NUM DESC ) WHERE ROWNUM<6`,
-        {cat : '%' + req.cat + '%', startTime : req.start, end : req.end},
+        {cat : '%' + req.cat + '%', startTime : req.start, endTime : req.end},
 
 	      // execute() options argument.  Since the query only returns one
 	      // row, we can optimize memory usage by reducing the default
@@ -148,6 +148,121 @@ export function getCrimeAreasRaceGender(req, res)
 	      });
 	  });
 }
+
+export function getCrimeByArea(req, res)
+{
+	var oracledb = require('oracledb');
+	var dbConfig = require('./../../CONFIG.json');
+	var startT = (parseInt(req.page) - 1) * req.perPage;
+	var endT = (parseInt(req.perPage) * parseInt(req.page))
+
+	// Get a non-pooled connection
+	oracledb.getConnection(
+	  {
+	    user          : dbConfig.user,
+	    password      : dbConfig.password,
+	    connectString : dbConfig.connectString
+	  },
+	  function(err, connection) {
+	    if (err) {
+	      console.error(err.message);
+	      return;
+	    }
+	    connection.execute(
+	      // The statement to execute
+	      `Select * from (select b.st_addr, a.date_occurred, a.time_occurred, c.crimedescription, rank() over (ORDER by a.dr_number DESC) rn from SSWAPNIL.crime_master a, SSWAPNIL.place_info b, SSWAPNIL.crime_description c, SSWAPNIL.weapon d, SSWAPNIL.area_info e where 
+			a.area_id = e.area_id 
+			and a.place_id = b.place_id 
+			and a.crime_code = c.crimecode 
+			and a.weapon_used_code = d.weapon_id 
+			and e.area_name = :area) WHERE rn between :n and :m order by rn`,
+        {area : req.area, n : startT, m : endT},
+
+	      // execute() options argument.  Since the query only returns one
+	      // row, we can optimize memory usage by reducing the default
+	      // maxRows value.  For the complete list of other options see
+	      // the documentation.
+
+	      // The callback function handles the SQL execution results
+	      function(err, result) {
+	        if (err) {
+	          console.error(err.message);
+	          doRelease(connection);
+	          return;
+	        }
+	       	var areas = {
+	       		areas : result.rows
+	       	}
+	        res.send(areas, 201);
+	        doRelease(connection);
+	      });
+	  });
+}
+
+export function getPercentageCrime(req, res)
+{
+	var oracledb = require('oracledb');
+	var dbConfig = require('./../../CONFIG.json');
+
+	// Get a non-pooled connection
+	oracledb.getConnection(
+	  {
+	    user          : dbConfig.user,
+	    password      : dbConfig.password,
+	    connectString : dbConfig.connectString
+	  },
+	  function(err, connection) {
+	    if (err) {
+	      console.error(err.message);
+	      return;
+	    }
+	    connection.execute(
+	      // The statement to execute
+	      `SELECT AREA_NAME,(SPECIFIC_CRIME_NUMBER/AREA_CRIME_NUMBER)*100 as percentage FROM
+(SELECT AREA_NAME, COUNT(*) AS AREA_CRIME_NUMBER FROM SSWAPNIL.CRIME_MASTER x, SSWAPNIL.Area_info y
+WHERE  x.area_id = y.area_id and
+AREA_NAME IN
+(SELECT AREA FROM
+    (SELECT c.AREA_NAME  AS AREA ,COUNT(*) AS No FROM SSWAPNIL.CRIME_MASTER A, SSWAPNIL.VICTIM_INFO B, SSWAPNIL.area_info c
+    WHERE B.CRIMEID = A.DR_NUMBER
+    AND c.area_id = a.area_id
+    AND   B.RACE = :race 
+    and B.SEX = :gen
+    AND   B.AGE>:age
+    GROUP BY c.AREA_NAME ORDER BY No DESC) WHERE ROWNUM<6)
+    GROUP BY AREA_NAME ORDER BY AREA_CRIME_NUMBER DESC) A,
+
+(SELECT AREA, No AS SPECIFIC_CRIME_NUMBER from(SELECT c.AREA_NAME AS AREA , COUNT(*) AS No FROM SSWAPNIL.CRIME_MASTER A, SSWAPNIL.VICTIM_INFO B, SSWAPNIL.area_info c
+    WHERE B.CRIMEID = A.DR_NUMBER
+    AND c.area_id = a.area_id
+    AND   B.RACE = :race 
+     and B.SEX = :gen
+    AND   B.AGE>:age
+    GROUP BY c.AREA_NAME ORDER BY No DESC) where rownum<6) B
+    WHERE A.AREA_NAME = B.AREA order by percentage desc`,
+        {race : req.race, gen : req.gender, age : parseInt(req.age)},
+
+	      // execute() options argument.  Since the query only returns one
+	      // row, we can optimize memory usage by reducing the default
+	      // maxRows value.  For the complete list of other options see
+	      // the documentation.
+
+	      // The callback function handles the SQL execution results
+	      function(err, result) {
+	        if (err) {
+	          console.error(err.message);
+	          doRelease(connection);
+	          return;
+	        }
+	       	var areas = {
+	       		areas : result.rows
+	       	}
+	        res.send(areas, 201);
+	        doRelease(connection);
+	      });
+	  });
+}
+
 
 export function getUnsafeAreas(req, res)
 {
