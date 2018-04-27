@@ -1,10 +1,10 @@
 (function () {
-    angular.module('crimeHelper.unsafeAreaController', [
+    angular.module('crimeHelper.countQueryController', [
         'barChart.service'
     ])
-        .controller("unsafeAreaController", unsafeAreaCtrl);
+        .controller("countQueryController", countQueryCtrl);
 
-    function unsafeAreaCtrl(api, $scope, $barChart) {
+    function countQueryCtrl(api, $scope, $barChart) {
         var vm = this;
         vm.venues = [];
         vm.flag = false;
@@ -14,12 +14,12 @@
             window.onresize = null;
         });
 
-        api.GetUnsafeAreas.get({}, function (response) {
+        api.GetTableEntryCount.get({}, function (response) {
 
-            angular.forEach(response.areas,function(val,index){
+            angular.forEach(response.TableCounts,function(val,index){
                 var temp = [];
-                temp.push(val.AREA_NAME);
-                temp.push(val['COUNT(*)']);
+                temp.push(val.TABLE_NAME);
+                temp.push(val.COUNT);
                 vm.venues.push(temp);
 
             });
@@ -38,6 +38,6 @@
 
     }
 
-    unsafeAreaCtrl.$inject = ["api", "$scope", "$barChart"];
+    countQueryCtrl.$inject = ["api", "$scope", "$barChart"];
 
 })();

@@ -35,6 +35,7 @@
 
             var url = "http://localhost:3000/api/v1/getCrimesByArea?Area="+vm.area1+"&page="+page+"&perPage=5";
             console.log("inside myfunc");
+            console.log(url);
 
             $http.get(url)
                 .then(function(response) {

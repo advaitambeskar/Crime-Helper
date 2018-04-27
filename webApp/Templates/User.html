@@ -25,19 +25,22 @@ function filterFunction() {
 <body>
   <div class="container-fluid" id="demo-view">
     <div class = "row">
+
       <div class = 'col-md-12 header-head-for-all-html'>
+        <a href = "user.html" style = "text-decoration: none; color: #FFF; width:100%;">
         <h1 class = 'display-3'>Los Angeles Police Department Crime Watchers</h1>
+        </a>
       </div>
     </div>
     <div class = "row menu-column-for-head">
       <div class = "col-md-4 menu-column-for-head-tab">
-        <a>HOME PAGE</a>
+        <a href = "user.html" style = "text-decoration: none; color: #FFF;">HOME PAGE</a>
       </div>
       <div class = "col-md-4 menu-column-for-head-tab">
-        <a>SOME QUERY LINK</a>
+        <a href = "crimeReported.html"  style = "text-decoration: none; color: #FFF;">SOME QUERY LINK</a>
       </div>
       <div class = "col-md-4 menu-column-for-head-tab">
-        <a>ABOUT US</a>
+        <a href = "aboutUs.html" style = "text-decoration: none; color: #FFF;">ABOUT US</a>
       </div>
     </div>
     <div class = "row gap-20px">
@@ -66,17 +69,19 @@ function filterFunction() {
         </h1>
         <div style = "text-align:center">
         <div class = 'btn-group-vertical'>
-          <button type = "button" class = "btn btn-outline-dark buttonsize" ui-sref="areaByCat"  style = "font-size: 1.5em;">CRIME BY TIME</button>
-          <button type = "button" class = "btn btn-outline-dark buttonsize" ui-sref="unsafeAreas"  style = "font-size: 1.5em;">AREAS BY CRIME TYPE</button>
-          <button type = "button" class = "btn btn-outline-dark buttonsize" ui-sref="unsafeAreaByGender" style = "font-size: 1.5em;">CRIME BY AGE, SEX, RACE</button>
-          <button type = "button" class = "btn btn-outline-dark buttonsize" ui-sref="crimeReported" style = "font-size: 1.5em;">CRIMES OCCURED BY THE NEIGHBOURHOOD</button>
-          <button type = "button" class = "btn btn-outline-dark buttonsize" ui-sref = "nothing" style = "font-size: 1.5em;">WAITING FOR THE END</button>
+          <button type = "button" class = "btn btn-outline-dark btn-lg" ui-sref="areaByCat"  style = "font-size: 1.5em;">CRIME BY TIME</button>
+          <button type = "button" class = "btn btn-outline-dark btn-lg" ui-sref="unsafeAreas"  style = "font-size: 1.5em;">AREAS BY CRIME TYPE</button>
+          <button type = "button" class = "btn btn-outline-dark btn-lg" ui-sref="unsafeAreaByGender" style = "font-size: 1.5em;">CRIME BY AGE, SEX, RACE</button>
+          <button type = "button" class = "btn btn-outline-dark btn-lg" ui-sref="crimeReported" style = "font-size: 1.5em;">CRIMES OCCURED BY THE NEIGHBOURHOOD</button>
+          <button type = "button" class = "btn btn-outline-dark btn-lg" ui-sref = "countQuery" style = "font-size: 1.5em;">TOTAL QUERY COUNT</button>
+          <button type = "button" class = "btn btn-outline-dark btn-lg" ui-sref = "percentageQuery" style = "font-size: 1.5em;">PERCENTAGE QUERY</button>
+
         </div>
         </div>
       </div>
     </div>
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-<footer><center>Group #18. Copyright &copy; LAPD</center></footer>
+<footer style = "width: 100%">Group #18. Copyright &copy; LAPD</footer>
 
 </div>
 

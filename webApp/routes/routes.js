@@ -8,7 +8,10 @@
         'crimeHelper.unsafeAreaController',
         'crimeHelper.unsafeAreaByGenderController',
         'crimeHelper.crimeReportedController',
-        'crimeHelper.areaByCatController'
+        'crimeHelper.areaByCatController',
+        'crimeHelper.countQueryController',
+        'crimeHelper.percentageQueryController'
+
 
     ])
         .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
@@ -46,6 +49,20 @@
                     templateUrl: "crimeReported.html",
                     controller: "crimeReportedController",
                     controllerAs: "crimeReportedCtrl"
+
+                })
+                .state('countQuery',{
+                    url:'/countQuery',
+                    templateUrl: "countQuery.html",
+                    controller: "countQueryController",
+                    controllerAs: "countQueryCtrl"
+
+                })
+                .state('percentageQuery',{
+                    url:'/percentageQuery',
+                    templateUrl: "percentage.html",
+                    controller: "percentageQueryController",
+                    controllerAs: "percentageQueryCtrl"
 
                 })
         }]);

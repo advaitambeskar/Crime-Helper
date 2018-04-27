@@ -2,14 +2,14 @@
 
 
 
-    angular.module('crimeHelper.unsafeAreaByGenderController', [
+    angular.module('crimeHelper.percentageQueryController', [
         'barChart.service'
     ])
-        .controller("unsafeAreaByGenderController", unsafeAreaByGenderCtrl);
+        .controller("percentageQueryController", percentageQueryCtrl);
 
-    unsafeAreaByGenderCtrl.$inject = [ '$scope', '$http', 'api' ];
+    percentageQueryCtrl.$inject = [ '$scope', '$http', 'api' ];
 
-    function unsafeAreaByGenderCtrl( $scope,$http, api ) {
+    function percentageQueryCtrl( $scope,$http, api ) {
 
         // two dates the user enters on 'demo.view.html'
         var vm = this;

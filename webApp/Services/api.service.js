@@ -12,7 +12,13 @@
 
                 GetAreas: $resource('/api/v1/getAreas', {}, {}),
 
-                GetRace: $resource('/api/v1/getRace', {}, {})
+                GetRace: $resource('/api/v1/getRace', {}, {}),
+
+                GetTableEntryCount: $resource('/api/v1/getTableEntryCount', {}, {}),
+
+                GetPercentageAreas : $resource('/api/v1/getPercentageCrime/RaceGenderAge', {race: '@race', age: '@age', gender: '@gender'}, {}),
+
+
             };
         }])
 })();
