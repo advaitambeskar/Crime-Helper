@@ -3,19 +3,22 @@
 
 
     angular.module('crimeHelper.percentageQueryController', [
-        'barChart.service'
+        'pieChart.service'
     ])
         .controller("percentageQueryController", percentageQueryCtrl);
 
-    percentageQueryCtrl.$inject = [ '$scope', '$http', 'api' ];
+    percentageQueryCtrl.$inject = [ '$scope', '$http', 'api', 'pieChart' ];
 
-    function percentageQueryCtrl( $scope,$http, api ) {
+    function percentageQueryCtrl( $scope,$http, api, pieChart ) {
 
         // two dates the user enters on 'demo.view.html'
         var vm = this;
         vm.race = "Select Race";
         vm.gender = "Select Gender";
         vm.genderList = ["Male", "Female", "NotKnown", "Trans"];
+        vm.graphOptions = pieChart.getOptions();
+        vm.flag = true;
+
         vm.selectRace = function (race) {
             vm.race = race.RACE;
         };
@@ -28,7 +31,8 @@
 
 
         vm.myFunc = function() {
-            var url = "http://localhost:3000/api/v1/getCrimeAreas/RaceGenderAge?race="+vm.race+"&age="+vm.age+"&gender="+vm.gender;
+            vm.graphData = [];
+            var url = "http://localhost:3000/api/v1/getPercentageCrime/RaceGenderAge?race="+vm.race+"&age="+vm.age+"&gender="+vm.gender;
 
             console.log("inside myfunc");
 
@@ -41,6 +45,15 @@
                     $scope.result = g.areas;
                     console.log("VM result");
                     console.log($scope.result);
+
+                    angular.forEach(g.areas,function(val,index){
+                        var temp = {};
+                        temp.key = val.AREA_NAME;
+                        temp.y = val.PERCENTAGE;
+                        // temp.color = "yellow";
+                        vm.graphData.push(temp);
+                        vm.flag = true;
+                    });
                 });
 
         };
