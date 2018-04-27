@@ -124,7 +124,7 @@ export function getCrimeAreasRaceGender(req, res)
 	    }
 	    connection.execute(
 	      // The statement to execute
-	      `SELECT AREA FROM (SELECT COUNT(*) AS No, c.AREA_NAME AS AREA FROM SSWAPNIL.CRIME_MASTER A, SSWAPNIL.VICTIM_INFO B,SSWAPNIL.area_info c WHERE B.CRIMEID = A.DR_NUMBER AND a.Area_id = c.area_id and  B.RACE = :race AND B.SEX = :gen AND   B.AGE > :age
+	      `SELECT AREA, NO FROM (SELECT COUNT(*) AS No, c.AREA_NAME AS AREA FROM SSWAPNIL.CRIME_MASTER A, SSWAPNIL.VICTIM_INFO B,SSWAPNIL.area_info c WHERE B.CRIMEID = A.DR_NUMBER AND a.Area_id = c.area_id and  B.RACE = :race AND B.SEX = :gen AND   B.AGE > :age
 			GROUP BY c.AREA_NAME ORDER BY No DESC) WHERE ROWNUM < 6`,
         {race : req.race, gen : req.gender, age : parseInt(req.age)},
 
@@ -199,6 +199,100 @@ export function getCrimeByArea(req, res)
 	  });
 }
 
+export function getChangeInCrime(req, res)
+{
+	var oracledb = require('oracledb');
+	var dbConfig = require('./../../CONFIG.json');
+
+	// Get a non-pooled connection
+	oracledb.getConnection(
+	  {
+	    user          : dbConfig.user,
+	    password      : dbConfig.password,
+	    connectString : dbConfig.connectString
+	  },
+	  function(err, connection) {
+	    if (err) {
+	      console.error(err.message);
+	      return;
+	    }
+	    connection.execute(
+	      // The statement to execute
+	      `SELECT count(*), DATE_OCCURRED FROM SSWAPNIL.CRIME_MASTER
+			WHERE DATE_OCCURRED <= :endDate
+			AND DATE_OCCURRED > :startDate
+			group by DATE_OCCURRED order by DATE_OCCURRED`,
+        {startDate : req.start,  endDate : req.end},
+
+	      // execute() options argument.  Since the query only returns one
+	      // row, we can optimize memory usage by reducing the default
+	      // maxRows value.  For the complete list of other options see
+	      // the documentation.
+
+	      // The callback function handles the SQL execution results
+	      function(err, result) {
+	        if (err) {
+	          console.error(err.message);
+	          doRelease(connection);
+	          return;
+	        }
+	       	var dates = {
+	       		CrimeDates : result.rows
+	       	}
+	        res.send(dates, 201);
+	        doRelease(connection);
+	      });
+	  });
+}
+
+getChangeInCrimePercent
+
+export function getChangeInCrimePercent(req, res)
+{
+	var oracledb = require('oracledb');
+	var dbConfig = require('./../../CONFIG.json');
+
+	// Get a non-pooled connection
+	oracledb.getConnection(
+	  {
+	    user          : dbConfig.user,
+	    password      : dbConfig.password,
+	    connectString : dbConfig.connectString
+	  },
+	  function(err, connection) {
+	    if (err) {
+	      console.error(err.message);
+	      return;
+	    }
+	    connection.execute(
+	      // The statement to execute
+	      `Select A.F1 AS FIRST,B.F2 AS SECOND, ((B.F2-A.F1)/A.F1)*100 AS PERCENTAGE_CHANGE from 
+(Select count(*)as F1 from SSWAPNIL.crime_master where DATE_OCCURRED = :startDate)  A,
+(Select count(*) as F2 from SSWAPNIL.crime_master where DATE_OCCURRED = :endDate) B`,
+        {startDate : req.start,  endDate : req.end},
+
+	      // execute() options argument.  Since the query only returns one
+	      // row, we can optimize memory usage by reducing the default
+	      // maxRows value.  For the complete list of other options see
+	      // the documentation.
+
+	      // The callback function handles the SQL execution results
+	      function(err, result) {
+	        if (err) {
+	          console.error(err.message);
+	          doRelease(connection);
+	          return;
+	        }
+	       	var dates = {
+	       		ChangePercent : result.rows
+	       	}
+	        res.send(dates, 201);
+	        doRelease(connection);
+	      });
+	  });
+}
+
+
 export function getPercentageCrime(req, res)
 {
 	var oracledb = require('oracledb');
@@ -228,7 +322,8 @@ AREA_NAME IN
     AND c.area_id = a.area_id
     AND   B.RACE = :race 
     and B.SEX = :gen
-    AND   B.AGE>:age
+    AND   B.AGE >= :startAge
+    AND   B.AGE <= :endAge
     GROUP BY c.AREA_NAME ORDER BY No DESC) WHERE ROWNUM<6)
     GROUP BY AREA_NAME ORDER BY AREA_CRIME_NUMBER DESC) A,
 
@@ -237,10 +332,11 @@ AREA_NAME IN
     AND c.area_id = a.area_id
     AND   B.RACE = :race 
      and B.SEX = :gen
-    AND   B.AGE>:age
+    AND   B.AGE >= :startAge
+    AND   B.AGE <= :endAge
     GROUP BY c.AREA_NAME ORDER BY No DESC) where rownum<6) B
     WHERE A.AREA_NAME = B.AREA order by percentage desc`,
-        {race : req.race, gen : req.gender, age : parseInt(req.age)},
+        {race : req.race, gen : req.gender, startAge : parseInt(req.age), endAge : parseInt(req.age)},
 
 	      // execute() options argument.  Since the query only returns one
 	      // row, we can optimize memory usage by reducing the default

@@ -1,6 +1,6 @@
 import {getUsers, getTableCount} from './app/Controllers/userController.js';
 import {getCategories, getAreas, getRace} from './app/Controllers/dropdownController.js';
-import {getUnsafeAreas, getCrimeAreasCategory, getCrimeAreasRaceGenderAge, getCrimeRamapantArea, getPercentageCrime, getCrimeByArea} from './app/Controllers/crimeController.js';
+import {getUnsafeAreas, getCrimeAreasCategory, getCrimeAreasRaceGenderAge, getCrimeRamapantArea, getPercentageCrime, getCrimeByArea, getChangeInCrime, getChangeInCrimePercent} from './app/Controllers/crimeController.js';
 var bodyParser = require('body-parser');
 
 module.exports = function(app) {
@@ -44,6 +44,14 @@ module.exports = function(app) {
 
   app.get('/api/v1/getCrimesByArea', function(req, res){
     var rows = getCrimeByArea(req, res);
+  });
+
+  app.get('/api/v1/getChangeInCrime', function(req, res){
+    var rows = getChangeInCrime(req, res);
+  });
+
+  app.get('/api/v1/getChangeInCrimePercent', function(req, res){
+    var rows = getChangeInCrimePercent(req, res);
   });
 
   // dropdown endpoints

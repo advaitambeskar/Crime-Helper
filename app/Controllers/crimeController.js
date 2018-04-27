@@ -28,6 +28,40 @@ async function getCrimeAreasCategory(req, res){
 
 }
 
+async function getChangeInCrime(req, res){
+
+	//adjust time format
+	req.query.startDate = new Date(req.query.startDate);
+	req.query.endDate = new Date(req.query.endDate);
+
+
+	var data = {
+		"start" : req.query.startDate, 
+		"end" : req.query.endDate
+	}
+
+	console.log(data);
+  return crimes.getChangeInCrime(data, res);
+
+}
+
+async function getChangeInCrimePercent(req, res){
+
+	//adjust time format
+	req.query.startDate = new Date(req.query.startDate);
+	req.query.endDate = new Date(req.query.endDate);
+
+
+	var data = {
+		"start" : req.query.startDate, 
+		"end" : req.query.endDate
+	}
+
+	console.log(data);
+  return crimes.getChangeInCrimePercent(data, res);
+
+}
+
 async function getCrimeRamapantArea(req, res){
 
 	//adjust time format
@@ -65,7 +99,8 @@ async function getPercentageCrime(req, res){
 	var data = {
 		"race" : req.query.race,
 		"gender" : req.query.gender,
-		"age" : parseInt(req.query.age)
+		"startAge" : parseInt(req.query.startAge),
+		"endAge" : parseInt(req.query.endAge)
 
 	}
   return crimes.getPercentageCrime(data, res);
@@ -90,5 +125,7 @@ module.exports =  {
   getCrimeAreasRaceGenderAge : getCrimeAreasRaceGenderAge,
   getCrimeRamapantArea : getCrimeRamapantArea,
   getPercentageCrime : getPercentageCrime,
-  getCrimeByArea : getCrimeByArea
+  getCrimeByArea : getCrimeByArea, 
+  getChangeInCrime : getChangeInCrime,
+  getChangeInCrimePercent : getChangeInCrimePercent
 };
