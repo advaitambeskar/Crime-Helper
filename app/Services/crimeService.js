@@ -336,7 +336,7 @@ AREA_NAME IN
     AND   B.AGE <= :endAge
     GROUP BY c.AREA_NAME ORDER BY No DESC) where rownum<6) B
     WHERE A.AREA_NAME = B.AREA order by percentage desc`,
-        {race : req.race, gen : req.gender, startAge : parseInt(req.age), endAge : parseInt(req.age)},
+        {race : req.race, gen : req.gender, startAge : parseInt(req.startAge), endAge : parseInt(req.endAge)},
 
 	      // execute() options argument.  Since the query only returns one
 	      // row, we can optimize memory usage by reducing the default
