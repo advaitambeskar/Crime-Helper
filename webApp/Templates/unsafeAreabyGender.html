@@ -2,7 +2,7 @@
 
 
 <div >
-    <link rel="stylesheet" type="text/css" href="./css/view.css">
+    <!--<link rel="stylesheet" type="text/css" href="./css/view.css">-->
     <div class="page-header">
         <h1>L.A. Police Department.<small> Crime Watch.</small></h1>
     </div>
@@ -28,11 +28,9 @@
             <br>
             <br>
 
-            <ul>
-                <li class="neel" ng-repeat=" x in result" >
-                    {{ x.AREA }}
-                </li>
-            </ul>
+            <div ng-if="unsafeAreaByGenderCtrl.flag" class="col-md-12">
+                <nvd3 options="unsafeAreaByGenderCtrl.graphOptions" data="unsafeAreaByGenderCtrl.graphData"></nvd3>
+            </div>
 
 
 
@@ -94,8 +92,8 @@
         </div>
     </div>
 
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./css/stylemin.css">
+    <!--<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="./css/stylemin.css">-->
 
 </div>
 
