@@ -7,6 +7,20 @@ async function getCategories(req, res){
 
 }
 
+async function getAreas(req, res){
+
+  return dropdown.getAreas(req, res);
+
+}
+
+async function getRace(req, res){
+
+  return dropdown.getRace(req, res);
+
+}
+
 module.exports =  {
-  getCategories : getCategories
+  getCategories : getCategories,
+  getAreas : getAreas,
+  getRace : getRace
 };
