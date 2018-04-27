@@ -314,27 +314,27 @@ export function getPercentageCrime(req, res)
 	    connection.execute(
 	      // The statement to execute
 	      `SELECT AREA_NAME,(SPECIFIC_CRIME_NUMBER/AREA_CRIME_NUMBER)*100 as percentage FROM
-(SELECT AREA_NAME, COUNT(*) AS AREA_CRIME_NUMBER FROM SSWAPNIL.CRIME_MASTER x, SSWAPNIL.Area_info y
-WHERE  x.area_id = y.area_id and
-AREA_NAME IN
-(SELECT AREA FROM
-    (SELECT c.AREA_NAME  AS AREA ,COUNT(*) AS No FROM SSWAPNIL.CRIME_MASTER A, SSWAPNIL.VICTIM_INFO B, SSWAPNIL.area_info c
-    WHERE B.CRIMEID = A.DR_NUMBER
-    AND c.area_id = a.area_id
-    AND   B.RACE = :race 
-    and B.SEX = :gen
-    AND   B.AGE >= :age
-    GROUP BY c.AREA_NAME ORDER BY No DESC) WHERE ROWNUM<6)
-    GROUP BY AREA_NAME ORDER BY AREA_CRIME_NUMBER DESC) A,
-
-(SELECT AREA, No AS SPECIFIC_CRIME_NUMBER from(SELECT c.AREA_NAME AS AREA , COUNT(*) AS No FROM SSWAPNIL.CRIME_MASTER A, SSWAPNIL.VICTIM_INFO B, SSWAPNIL.area_info c
-    WHERE B.CRIMEID = A.DR_NUMBER
-    AND c.area_id = a.area_id
-    AND   B.RACE = :race 
-     and B.SEX = :gen
-    AND   B.AGE >= :age
-    GROUP BY c.AREA_NAME ORDER BY No DESC) where rownum<6) B
-    WHERE A.AREA_NAME = B.AREA order by percentage desc`,
+(			SELECT AREA_NAME, COUNT(*) AS AREA_CRIME_NUMBER FROM SSWAPNIL.CRIME_MASTER x, SSWAPNIL.Area_info y
+			WHERE  x.area_id = y.area_id and
+			AREA_NAME IN
+			(SELECT AREA FROM
+				(SELECT c.AREA_NAME  AS AREA ,COUNT(*) AS No FROM SSWAPNIL.CRIME_MASTER A, SSWAPNIL.VICTIM_INFO B, SSWAPNIL.area_info c
+				WHERE B.CRIMEID = A.DR_NUMBER
+				AND c.area_id = a.area_id
+				AND   B.RACE = :race 
+				and B.SEX = :gen
+				AND   B.AGE >= :age
+				GROUP BY c.AREA_NAME ORDER BY No DESC) WHERE ROWNUM<6)
+				GROUP BY AREA_NAME ORDER BY AREA_CRIME_NUMBER DESC) A,
+			
+			(SELECT AREA, No AS SPECIFIC_CRIME_NUMBER from(SELECT c.AREA_NAME AS AREA , COUNT(*) AS No FROM SSWAPNIL.CRIME_MASTER A, SSWAPNIL.VICTIM_INFO B, SSWAPNIL.area_info c
+				WHERE B.CRIMEID = A.DR_NUMBER
+				AND c.area_id = a.area_id
+				AND   B.RACE = :race 
+				 and B.SEX = :gen
+				AND   B.AGE >= :age
+				GROUP BY c.AREA_NAME ORDER BY No DESC) where rownum<6) B
+				WHERE A.AREA_NAME = B.AREA order by percentage desc`,
         {race : req.race, gen : req.gender, age : req.age},
 
 	      // execute() options argument.  Since the query only returns one
