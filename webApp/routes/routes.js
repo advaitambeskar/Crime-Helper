@@ -10,7 +10,9 @@
         'crimeHelper.crimeReportedController',
         'crimeHelper.areaByCatController',
         'crimeHelper.countQueryController',
-        'crimeHelper.percentageQueryController'
+        'crimeHelper.percentageQueryController',
+        'crimeHelper.weaponQueryController'
+
 
 
     ])
@@ -63,6 +65,13 @@
                     templateUrl: "percentage.html",
                     controller: "percentageQueryController",
                     controllerAs: "percentageQueryCtrl"
+
+                })
+                .state('weaponQuery',{
+                    url:'/weaponQuery',
+                    templateUrl: "weaponQuery.html",
+                    controller: "weaponQueryController",
+                    controllerAs: "weaponQueryCtrl"
 
                 })
         }]);
