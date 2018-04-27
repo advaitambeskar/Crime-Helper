@@ -7,7 +7,8 @@
         'crimeHelper.homeController',
         'crimeHelper.unsafeAreaController',
         'crimeHelper.unsafeAreaByGenderController',
-        'crimeHelper.crimeReportedController'
+        'crimeHelper.crimeReportedController',
+        'crimeHelper.areaByCatController'
 
     ])
         .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
@@ -27,7 +28,13 @@
                     controller: "unsafeAreaController",
                     controllerAs: "unsafeAreaCtrl"
                 })
-                 .state('unsafeAreaByGender',{
+                .state('areaByCat', {
+                    url: '/areaByCat',
+                    templateUrl: "query1.html",
+                    controller: "AreaByCatController",
+                    controllerAs: "areaByCatCtrl"
+                })
+                .state('unsafeAreaByGender',{
                     url:'/unsafeAreaByGender',
                     templateUrl: "unsafeAreabyGender.html",
                     controller: "unsafeAreaByGenderController",

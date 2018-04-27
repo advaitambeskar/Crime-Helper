@@ -23,7 +23,7 @@
                 vm.venues.push(temp);
 
             });
-            debugger
+
             vm.graphData = [
                 {
                     key: "Check-ins",
@@ -33,7 +33,7 @@
             ];
             vm.flag = true;
         }, function (errResponse) {
-            debugger
+
         })
 
     }
