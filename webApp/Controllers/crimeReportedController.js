@@ -10,24 +10,28 @@
     ])
         .controller("crimeReportedController", crimeReportedCtrl);
 
-    crimeReportedCtrl.$inject = [ '$scope', '$http' ];
+    crimeReportedCtrl.$inject = [ '$scope', '$http', 'api' ];
 
-    function crimeReportedCtrl( $scope,$http ) {
+    function crimeReportedCtrl( $scope,$http, api ) {
 
         // two dates the user enters on 'demo.view.html'
         var vm = this;
+        vm.area1 = "Select an area";
 
-
-
+        api.GetAreas.get({}, function (response) {
+            vm.areaList = response.areas;
+        });
         console.log(vm.area1);
-        debugger
+        vm.selectArea = function (area) {
+            vm.area1 = area.AREA_NAME;
+        }
 
         var page  = 1;
 
         vm.myFunc = function() {
             console.log("sdadadad");
 
-         debugger
+
 
             var url = "http://localhost:3000/api/v1/getCrimesByArea?Area="+vm.area1+"&page="+page+"&perPage=5";
             console.log("inside myfunc");

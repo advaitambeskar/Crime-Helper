@@ -54,10 +54,19 @@
             <hr>
 
             <form class="form-inline">
-                <div class="form-group">
-                    <input data-ng-model="crimeReportedCtrl.area1" type="text" class="form-control" id="area1" placeholder="AREA">
+                <!--<div class="form-group">-->
+                    <!--<input data-ng-model="crimeReportedCtrl.area1" type="text" class="form-control" id="area1" placeholder="AREA">-->
+                <!--</div>-->
+                <div class="dropdown ">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{crimeReportedCtrl.area1}}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a ng-click="crimeReportedCtrl.selectArea(area)" class="dropdown-item" ng-repeat="area in crimeReportedCtrl.areaList">
+                            {{area.AREA_NAME}}
+                        </a>
+                    </div>
                 </div>
-
 
 
                 <button ng-click="crimeReportedCtrl.myFunc()" class="btn" id="gen-button">Go!</button>

@@ -8,7 +8,9 @@
 
                 GetCategories: $resource('/api/v1/getCategories', {}, {}),
 
-                GetCrimeAreas: $resource('/api/v1/getCrimeAreasCategory', {startTime: '@startTime', endTime: '@endTime', category: '@category'}, {})
+                GetCrimeAreas: $resource('/api/v1/getCrimeAreasCategory', {startTime: '@startTime', endTime: '@endTime', category: '@category'}, {}),
+
+                GetAreas: $resource('/api/v1/getAreas', {}, {})
             };
         }])
 })();
