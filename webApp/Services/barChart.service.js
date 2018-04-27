@@ -8,7 +8,7 @@
             };
         })
 
-    function getOptions() {
+    function getOptions(xLabel, bottom) {
         return {
             chart: {
                 "type": "discreteBarChart",
@@ -16,13 +16,14 @@
                 "margin": {
                     "top": 20,
                     "right": 20,
-                    "bottom": 50,
+                    "bottom": 200,
                     "left": 65
                 },
                 "showValues": false,
                 "duration": 500,
                 "xAxis": {
-                    "axisLabel": "Areas"
+                    "axisLabel": xLabel,
+                    "rotateLabels": -45
                 },
                 "yAxis": {
                     "axisLabel": "Number of reported crimes",

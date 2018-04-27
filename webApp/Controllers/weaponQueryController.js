@@ -8,7 +8,7 @@
         var vm = this;
         vm.venues = [];
         vm.flag = false;
-        vm.graphOptions = $barChart.getOptions();
+        vm.graphOptions = $barChart.getOptions("Weapons");
 
         $scope.$on('$locationChangeStart', function(event) {
             window.onresize = null;

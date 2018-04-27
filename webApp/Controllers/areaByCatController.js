@@ -11,7 +11,7 @@
         vm.categories = [];
 
         vm.flag = false;
-        vm.graphOptions = $barChart.getOptions();
+        vm.graphOptions = $barChart.getOptions("Areas");
         vm.selectedCat = {CRIMEDESCRIPTION: "Please select crime category"};
         api.GetCategories.get({}, function (response) {
             vm.categories = response.categories;
