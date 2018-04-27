@@ -13,9 +13,7 @@
 
         // two dates the user enters on 'demo.view.html'
         var vm = this;
-       var gender1 = vm.gender;
-       var age1 = vm.age;
-       var race1 = vm.race;
+
 
 
 debugger
