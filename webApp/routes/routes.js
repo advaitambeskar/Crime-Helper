@@ -5,7 +5,8 @@
         'ui.router',
         'api.service',
         'crimeHelper.homeController',
-        'crimeHelper.unsafeAreaController'
+        'crimeHelper.unsafeAreaController',
+        'crimeHelper.areaByCatController'
     ])
         .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
             $locationProvider.hashPrefix('');
@@ -23,6 +24,12 @@
                     templateUrl: "unsafeArea.html",
                     controller: "unsafeAreaController",
                     controllerAs: "unsafeAreaCtrl"
+                })
+                .state('areaByCat', {
+                    url: '/areaByCat',
+                    templateUrl: "query1.html",
+                    controller: "AreaByCatController",
+                    controllerAs: "areaByCatCtrl"
                 })
         }]);
 })();
