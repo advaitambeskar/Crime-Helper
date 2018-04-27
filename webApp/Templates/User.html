@@ -23,52 +23,60 @@ function filterFunction() {
 
 </head>
 <body>
-
-<div class="container">
-
-<header>
-
-   
-   <h1><br></br>User Page</h1>
-</header>
-  
-<nav>
-  <ul>
-    <img src="pulpitrock.jpg" alt="Mountain View">
-    <br></br>
-
-    <li><a href="#">disp_username</a></li>
-    <br></br>
-
-    
-    <div class="Menu">
-<button onclick="myFunction()" class="dropbtn">Menu</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#about">About</a>
-    <a href="#edit">Edit Profile</a>
-    <a href="#blog">Info</a>
-  
-  <a href="Page 1.html">Logout</a>
-  </div>
-</div>
-  </ul>
-</nav>
-
-<article>
-  <h1>Welcome User</h1>
-  <p>Please select your query</p>
-
-  <button class="button button4" class="block">Report Crime</button>
-  <button class="button button4" class="block" ui-sref="areaByCat">Area by Category</button>
-  <button class="button button4" class="block" ui-sref="unsafeAreas">Request Information</button>
-  <button class="button button4" class="block" ui-sref="unsafeAreaByGender">Unsafe Areas by Gender,Race and Age</button>
-  <button class="button button4" class="block" ui-sref="crimeReported">Crime Reported</button>
-
-
-</article>
+  <div class="container-fluid" id="demo-view">
+    <div class = "row">
+      <div class = 'col-md-12 header-head-for-all-html'>
+        <h1 class = 'display-3'>Los Angeles Police Department Crime Watchers</h1>
+      </div>
+    </div>
+    <div class = "row menu-column-for-head">
+      <div class = "col-md-4 menu-column-for-head-tab">
+        <a>HOME PAGE</a>
+      </div>
+      <div class = "col-md-4 menu-column-for-head-tab">
+        <a>SOME QUERY LINK</a>
+      </div>
+      <div class = "col-md-4 menu-column-for-head-tab">
+        <a>ABOUT US</a>
+      </div>
+    </div>
+    <div class = "row gap-20px">
+      <div class = col>
+        <p></p>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "col-md-4">
+        <h1  class = "display-4">
+          CRIME WATCH
+        </h1>
+        <p class = "lead">
+          Colloquially known as <mark>CRIMEWATCH</mark>; this website application, primarily designed to analyse
+          historic crime data from the city of Los Angeles, aims to provide significant methods to make user
+          interactible set of solutions for the crime that occurs in this city.
+          Imagine if you moved to the city of L.A. and you do not have a point of reference,
+          The application lets the user recognize patterns in crime, weapons used and
+          the demographics of victims which facilitates better understanding of crime
+          in its entirety.
+        </p>
+      </div>
+      <div class = "col-md-6">
+        <h1 class = "display-4" style = "text-align: center;">
+         Available Options
+        </h1>
+        <div style = "text-align:center">
+        <div class = 'btn-group-vertical'>
+          <button type = "button" class = "btn btn-outline-dark buttonsize" ui-sref="areaByCat"  style = "font-size: 1.5em;">CRIME BY TIME</button>
+          <button type = "button" class = "btn btn-outline-dark buttonsize" ui-sref="unsafeAreas"  style = "font-size: 1.5em;">AREAS BY CRIME TYPE</button>
+          <button type = "button" class = "btn btn-outline-dark buttonsize" ui-sref="unsafeAreaByGender" style = "font-size: 1.5em;">CRIME BY AGE, SEX, RACE</button>
+          <button type = "button" class = "btn btn-outline-dark buttonsize" ui-sref="crimeReported" style = "font-size: 1.5em;">CRIMES OCCURED BY THE NEIGHBOURHOOD</button>
+          <button type = "button" class = "btn btn-outline-dark buttonsize" ui-sref = "nothing" style = "font-size: 1.5em;">WAITING FOR THE END</button>
+        </div>
+        </div>
+      </div>
+    </div>
 <br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-<footer><center>Copyright &copy; LAPD</center></footer>
+<footer><center>Group #18. Copyright &copy; LAPD</center></footer>
 
 </div>
 
