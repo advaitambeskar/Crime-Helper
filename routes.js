@@ -1,13 +1,17 @@
 import {getUsers, getTableCount} from './app/Controllers/userController.js';
-import {getCategories} from './app/Controllers/dropdownController.js';
+import {getCategories, getAreas, getRace} from './app/Controllers/dropdownController.js';
 import {getUnsafeAreas, getCrimeAreasCategory, getCrimeAreasRaceGenderAge, getCrimeRamapantArea, getPercentageCrime, getCrimeByArea} from './app/Controllers/crimeController.js';
 var bodyParser = require('body-parser');
 
 module.exports = function(app) {
 
+  //user endpoints
+
   app.get('/api/v1/getAllUsers', function(req, res){
     var rows = getUsers(req, res);
   });
+
+  //crime area endpints
 
   app.get('/api/v1/getUnsafeAreas', function(req, res){
     var rows = getUnsafeAreas(req, res);
@@ -33,10 +37,6 @@ module.exports = function(app) {
     var rows = getPercentageCrime(req, res);
   });
 
-  app.get('/api/v1/getCategories', function(req, res){
-    var rows = getCategories(req, res);
-  });
-
   app.get('/api/v1/getTableEntryCount', function(req, res){
     var rows = getTableCount(req, res);
   });
@@ -46,6 +46,20 @@ module.exports = function(app) {
     var rows = getCrimeByArea(req, res);
   });
 
+  // dropdown endpoints
 
+
+  app.get('/api/v1/getCategories', function(req, res){
+    var rows = getCategories(req, res);
+  });
+
+
+  app.get('/api/v1/getAreas', function(req, res){
+    var rows = getAreas(req, res);
+  });
+
+  app.get('/api/v1/getRace', function(req, res){
+    var rows = getRace(req, res);
+  });
 
 };
