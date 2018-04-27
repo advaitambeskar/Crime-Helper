@@ -48,12 +48,32 @@
             <hr>
 
             <form class="form-inline">
-                <div class="form-group">
-                    <input data-ng-model="unsafeAreaByGenderCtrl.gender" type="text" class="form-control" id="gender" placeholder="Gender">
+                <!--<div class="form-group">-->
+                    <!--<input data-ng-model="unsafeAreaByGenderCtrl.gender" type="text" class="form-control" id="gender" placeholder="Gender">-->
+                <!--</div>-->
+                <div class="dropdown ">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{unsafeAreaByGenderCtrl.gender}}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <a ng-click="unsafeAreaByGenderCtrl.selectGender(gender)" class="dropdown-item" ng-repeat="gender in unsafeAreaByGenderCtrl.genderList">
+                            {{gender}}
+                        </a>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <input data-ng-model="unsafeAreaByGenderCtrl.race" type="text" class="form-control" id="race" placeholder="Race">
+                <!--<div class="form-group">-->
+                    <!--<input data-ng-model="unsafeAreaByGenderCtrl.race" type="text" class="form-control" id="race" placeholder="Race">-->
+                <!--</div>-->
+                <div class="dropdown ">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{unsafeAreaByGenderCtrl.race}}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a ng-click="unsafeAreaByGenderCtrl.selectRace(race)" class="dropdown-item" ng-repeat="race in unsafeAreaByGenderCtrl.raceList">
+                            {{race.RACE}}
+                        </a>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -61,7 +81,7 @@
                 </div>
 
                 <button ng-click="unsafeAreaByGenderCtrl.myFunc()" class="btn" id="gen-button">Go!</button>
-                <button data-ng-click="" type="submit" class="btn" id="reset-button">Reset Graph</button>
+                <!--<button data-ng-click="" type="submit" class="btn" id="reset-button">Reset Graph</button>-->
             </form>
 
             <hr>

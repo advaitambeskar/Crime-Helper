@@ -10,7 +10,9 @@
 
                 GetCrimeAreas: $resource('/api/v1/getCrimeAreasCategory', {startTime: '@startTime', endTime: '@endTime', category: '@category'}, {}),
 
-                GetAreas: $resource('/api/v1/getAreas', {}, {})
+                GetAreas: $resource('/api/v1/getAreas', {}, {}),
+
+                GetRace: $resource('/api/v1/getRace', {}, {})
             };
         }])
 })();
