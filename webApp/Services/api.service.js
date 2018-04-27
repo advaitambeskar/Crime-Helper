@@ -18,7 +18,7 @@
 
                 GetPercentageAreas : $resource('/api/v1/getPercentageCrime/RaceGenderAge', {race: '@race', age: '@age', gender: '@gender'}, {}),
 
-
+                GetWeaponUsed: $resource('/api/v1/getTopWeaponsUsed', {}, {}),
             };
         }])
 })();
