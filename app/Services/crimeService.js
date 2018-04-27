@@ -323,8 +323,7 @@ AREA_NAME IN
     AND c.area_id = a.area_id
     AND   B.RACE = :race 
     and B.SEX = :gen
-    AND   B.AGE >= :startAge
-    AND   B.AGE <= :endAge
+    AND   B.AGE >= :age
     GROUP BY c.AREA_NAME ORDER BY No DESC) WHERE ROWNUM<6)
     GROUP BY AREA_NAME ORDER BY AREA_CRIME_NUMBER DESC) A,
 
@@ -333,11 +332,10 @@ AREA_NAME IN
     AND c.area_id = a.area_id
     AND   B.RACE = :race 
      and B.SEX = :gen
-    AND   B.AGE >= :startAge
-    AND   B.AGE <= :endAge
+    AND   B.AGE >= :age
     GROUP BY c.AREA_NAME ORDER BY No DESC) where rownum<6) B
     WHERE A.AREA_NAME = B.AREA order by percentage desc`,
-        {race : req.race, gen : req.gender, startAge : parseInt(req.startAge), endAge : parseInt(req.endAge)},
+        {race : req.race, gen : req.gender, age : req.age},
 
 	      // execute() options argument.  Since the query only returns one
 	      // row, we can optimize memory usage by reducing the default

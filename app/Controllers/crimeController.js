@@ -94,8 +94,7 @@ async function getPercentageCrime(req, res){
 	var data = {
 		"race" : req.query.race,
 		"gender" : req.query.gender,
-		"startAge" : parseInt(req.query.startAge),
-		"endAge" : parseInt(req.query.endAge)
+		"age" : parseInt(req.query.age)
 
 	}
   return crimes.getPercentageCrime(data, res);
