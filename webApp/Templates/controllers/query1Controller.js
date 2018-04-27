@@ -13,13 +13,17 @@
 
     query1Controller.$inject = [ '$scope', '$http', 'd3', 'drawGraph' ];
 
-    function DemoController($scope, $http, d3, drawGraph) {
+    function query1Controller($scope, $http, d3, drawGraph) {
 
         // bindables up top
         var vm = this;
         // two dates the user enters on 'demo.view.html'
         vm.userDate1;
         vm.userDate2;
+        vm.userDate3;
+
+
+
         // functions called from buttons on 'demo.view.html'
         vm.generateGraph = generateGraph;
         vm.resetGraph = resetGraph;
