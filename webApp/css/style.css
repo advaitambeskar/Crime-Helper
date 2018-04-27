@@ -288,3 +288,26 @@ article {
 .mt100{
     margin-top: 100px;
 }
+.header-head-for-all-html{
+    background-color: #000;
+    color: #fff;
+    font-family : monospace, 'Sans-Serif';
+    font-size: 2em;
+    width : 100%;
+    border: 1px solid #FFF;
+    border-left: 2px solid #FFF;
+    border-right: 2px solid #FFF;
+}
+div.menu-column-for-head{
+    background-color: #000;
+    color: #fff;
+    font-family : monospace, 'Sans-Serif';
+    font-size: 2em;
+    border: 1px solid #FFF;
+}
+div.menu-column-for-head-tab{
+    border: 1px solid #FFF;
+}
+div.gap-20px{
+    width : 20px;
+}
