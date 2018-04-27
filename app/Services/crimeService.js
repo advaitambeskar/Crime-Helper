@@ -267,9 +267,10 @@ export function getChangeInCrimePercent(req, res)
 	    connection.execute(
 	      // The statement to execute
 	      `Select A.F1 AS FIRST,B.F2 AS SECOND, ((B.F2-A.F1)/A.F1)*100 AS PERCENTAGE_CHANGE from 
-(Select count(*)as F1 from SSWAPNIL.crime_master where DATE_OCCURRED = :startDate)  A,
-(Select count(*) as F2 from SSWAPNIL.crime_master where DATE_OCCURRED = :endDate) B`,
-        {startDate : req.start,  endDate : req.end},
+( Select count(*)as F1 from SSWAPNIL.crime_master where  Extract(year from DATE_OCCURRED) = :startYear )  A,
+( Select count(*) as F2 from SSWAPNIL.crime_master where  Extract(year from DATE_OCCURRED)= :endYear ) B
+`,
+        {startYear : req.start,  endYear : req.end},
 
 	      // execute() options argument.  Since the query only returns one
 	      // row, we can optimize memory usage by reducing the default
@@ -336,7 +337,7 @@ AREA_NAME IN
     AND   B.AGE <= :endAge
     GROUP BY c.AREA_NAME ORDER BY No DESC) where rownum<6) B
     WHERE A.AREA_NAME = B.AREA order by percentage desc`,
-        {race : req.race, gen : req.gender, startAge : parseInt(req.age), endAge : parseInt(req.age)},
+        {race : req.race, gen : req.gender, startAge : parseInt(req.startAge), endAge : parseInt(req.endAge)},
 
 	      // execute() options argument.  Since the query only returns one
 	      // row, we can optimize memory usage by reducing the default
@@ -398,6 +399,51 @@ group by area_name  order by count(*) desc`,
 	       		areas : result.rows
 	       	}
 	        res.send(areas, 201);
+	        doRelease(connection);
+	      });
+	  });
+}
+
+export function getTopWeaponsUsed(req, res)
+{
+	var oracledb = require('oracledb');
+	var dbConfig = require('./../../CONFIG.json');
+
+	// Get a non-pooled connection
+	oracledb.getConnection(
+	  {
+	    user          : dbConfig.user,
+	    password      : dbConfig.password,
+	    connectString : dbConfig.connectString
+	  },
+	  function(err, connection) {
+	    if (err) {
+	      console.error(err.message);
+	      return;
+	    }
+	    connection.execute(
+	      // The statement to execute
+	      `select weapon_name , times_used from (
+select b.name as weapon_name , count(*) as times_used from SSWAPNIL.crime_master a,
+SSWAPNIL.weapon b where a.weapon_used_code = b.weapon_id 
+and b.name not in ('STRONG-ARM (HANDS, FIST, FEET OR BODILY FORCE)','VERBAL THREAT','UNKNOWN WEAPON/OTHER WEAPON')
+group by b.name order by count(*) desc) where rownum <11`,
+	      // execute() options argument.  Since the query only returns one
+	      // row, we can optimize memory usage by reducing the default
+	      // maxRows value.  For the complete list of other options see
+	      // the documentation.
+
+	      // The callback function handles the SQL execution results
+	      function(err, result) {
+	        if (err) {
+	          console.error(err.message);
+	          doRelease(connection);
+	          return;
+	        }
+	       	var data = {
+	       		weapons : result.rows
+	       	}
+	        res.send(data, 201);
 	        doRelease(connection);
 	      });
 	  });

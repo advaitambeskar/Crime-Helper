@@ -47,14 +47,9 @@ async function getChangeInCrime(req, res){
 
 async function getChangeInCrimePercent(req, res){
 
-	//adjust time format
-	req.query.startDate = new Date(req.query.startDate);
-	req.query.endDate = new Date(req.query.endDate);
-
-
 	var data = {
-		"start" : req.query.startDate, 
-		"end" : req.query.endDate
+		"start" : req.query.startYear, 
+		"end" : req.query.endYear
 	}
 
 	console.log(data);
@@ -119,6 +114,12 @@ async function getCrimeByArea(req, res){
 
 }
 
+async function getTopWeaponsUsed(req, res){
+
+  return crimes.getTopWeaponsUsed(req, res);
+
+}
+
 module.exports =  {
   getUnsafeAreas : getUnsafeAreas,
   getCrimeAreasCategory :getCrimeAreasCategory, 
@@ -127,5 +128,6 @@ module.exports =  {
   getPercentageCrime : getPercentageCrime,
   getCrimeByArea : getCrimeByArea, 
   getChangeInCrime : getChangeInCrime,
-  getChangeInCrimePercent : getChangeInCrimePercent
+  getChangeInCrimePercent : getChangeInCrimePercent, 
+  getTopWeaponsUsed : getTopWeaponsUsed
 };
